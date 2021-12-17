@@ -137,7 +137,10 @@ void ATPS_A2_CPPCharacter::Shoot() {
 
 	// Hit.GetActor()->AddActorWorldOffset();
 	GLog->Log("enter");
-	APaintBall* ball = GetWorld()->SpawnActor<APaintBall>();
+	FActorSpawnParameters params;
+
+	APaintBall* ball = GetWorld()->SpawnActor<APaintBall>(BallModel,GetActorLocation(),GetActorRotation(),params);
+	//ball->Model = Model;
 	ball->Forward = FollowCamera->GetForwardVector();
 	ball->BeginLocation = GetActorLocation();
 }

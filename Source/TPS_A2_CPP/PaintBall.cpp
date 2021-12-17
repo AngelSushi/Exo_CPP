@@ -4,7 +4,6 @@
 #include "PaintBall.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
-
 // Sets default values
 APaintBall::APaintBall()
 {
@@ -21,21 +20,16 @@ APaintBall::APaintBall()
 	projectile->SetUpdatedComponent(MeshComponent);
 	projectile->InitialSpeed = 1000.f;
 	projectile->MaxSpeed = 1000.f;
-	projectile->bRotationFollowsVelocity = true;
-	projectile->bShouldBounce = true;
-	projectile->Bounciness = 0.3f;
 	projectile->ProjectileGravityScale = 0.0f;
 	
 	
-	
+	MeshComponent->OnComponentHit.AddDynamic(this, &APaintBall::OnHit);
 }
 
 // Called when the game starts or when spawned
 void APaintBall::BeginPlay()
 {
 	SetActorLocation(BeginLocation);
-	
-
 	Super::BeginPlay();
 	
 }
@@ -47,3 +41,6 @@ void APaintBall::Tick(float DeltaTime)
 
 }
 
+void APaintBall::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
+
+}

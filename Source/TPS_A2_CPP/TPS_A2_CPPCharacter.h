@@ -35,6 +35,11 @@ public:
 	UPROPERTY(EditAnywhere)
 	bool IsGrabbing;
 
+
+	UPROPERTY(EditAnywhere)
+	class UClass* BallModel;
+
+
 protected:
 
 	virtual void BeginPlay() override;
